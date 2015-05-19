@@ -1,0 +1,3 @@
+rootProject.name = 'SpringBootCamelStarter'
+
+include 'spring-boot-camel'

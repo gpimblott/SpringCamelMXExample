@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+
+
+version = '1.0'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+allprojects {
+}
+
+subprojects {
+    apply plugin: "java"
+
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+}
+
+
+project(':spring-boot-camel') {
+    apply plugin: "spring-boot"
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter" )
+        compile("org.apache.camel:camel-core:2.15.2")
+        compile("org.apache.camel:camel-context:2.15.2")
+        compile("org.apache.camel:camel-spring-boot:2.15.2")
+
+        compile("org.springframework.boot:spring-boot-starter-actuator")
+
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile("junit:junit")
+    }
+
+    mainClassName = 'com.pimblott.samples.spring.boot.camel.ExampleCamelApplication'
+
+    jar {
+        baseName = 'SpringBootCamelStarter'
+        version = '0.1.0-SNAPSHOT'
+    }
+}
+
+
+
