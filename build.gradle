@@ -35,12 +35,20 @@ project(':spring-boot-camel') {
     apply plugin: "spring-boot"
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter:1.3.6.RELEASE" )
+        compile("org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE" ){
+            exclude module: "spring-boot-starter-tomcat"
+        }
+
+        compile("org.springframework.boot:spring-boot-starter-jetty:1.3.6.RELEASE")
+
         compile("org.springframework.boot:spring-boot-starter-actuator:1.3.6.RELEASE")
 
         compile("org.apache.camel:camel-spring-boot-starter:2.17.0")
         compile("org.apache.camel:camel-netty:2.17.0")
         compile("org.apache.camel:camel-netty-http:2.17.0")
+
+        compile("io.hawt:hawtio-springboot:1.4.65")
+        compile("io.hawt:hawtio-core:1.4.65")
 
         testCompile("org.springframework.boot:spring-boot-starter-test")
         testCompile("junit:junit")
