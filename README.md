@@ -17,7 +17,6 @@ This gives you the following capabilities:
 * HTTP Servlet container - for actuator and your own HTTP routes
 * Metrics
 * Monitoring
-* 
 
 The following endpoints are available when you run the application:
 
@@ -26,17 +25,19 @@ The following endpoints are available when you run the application:
 ## http://{host}:8091/hawtio
 
 Access to the Hawt.io monitoring console.  Authentication has been turned off so you will be redirected to the configuration screen.  To connect to your application use the jolokia endpoint as follows
+```
 * schema=http
 * host=your host
 * port=8095
 * path=jolokia
-
+```
 ## http://{host}:8095/jolokia
 
 This is required for the hawt.io console
 
 ## Actuator endpoints
 
+```
  http://{host}:8095/metrics
  http://{host}:8095/env
  http://{host}:8095/health
@@ -45,11 +46,12 @@ This is required for the hawt.io console
  http://{host}:8095/trace
  http://{host}:8095/info
  http://{host}:8095/dump
+```
 
 # Camel Routes
 
 Teo camel routes are also defined using diferant mechanisms
 
-1) A timer that logs a message every second
-2) A route that exposes a HTTP endpoint and returns 'Hello world' (http://{host}:18080)
+ 1. A timer that logs a message every second
+ 2. A route that exposes a HTTP endpoint and returns 'Hello world' (http://{host}:18080)
 
