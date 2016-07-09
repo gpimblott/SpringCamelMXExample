@@ -2,7 +2,7 @@
 
 My starter project for a Spring Boot application using Apache Camel.
 
-This contains a number of 'funky' features that are useful for development and demonstrations  They can easily be disabled for production is required.
+This contains a number of 'funky' features that are useful for development and demonstrations.  They can easily be disabled for production if required.
 
 The project is pre-configured with the following items:
 * Spring Boot
@@ -37,14 +37,14 @@ This is required for the hawt.io console
 
 ## Actuator endpoints
 
-http://{host}:8095/metrics
-http://{host}:8095/env
-http://{host}:8095/health
-http://{host}:8095/mappings
-http://{host}:8095/configprops
-http://{host}:8095/trace
-http://{host}:8095/info
-http://{host}:8095/dump
+ http://{host}:8095/metrics
+ http://{host}:8095/env
+ http://{host}:8095/health
+ http://{host}:8095/mappings
+ http://{host}:8095/configprops
+ http://{host}:8095/trace
+ http://{host}:8095/info
+ http://{host}:8095/dump
 
 # Camel Routes
 
