@@ -37,6 +37,8 @@ This is required for the hawt.io console
 
 ## Actuator endpoints
 
+These are the standard Spring Boot Actuator endpoints for 'Production ready' code.  These are exposed on a different port to the main application to enable their protection using standard firewall port protection.  For further protection authentication could be enabled.
+
 ```
  http://{host}:8095/metrics
  http://{host}:8095/env
@@ -50,8 +52,8 @@ This is required for the hawt.io console
 
 # Camel Routes
 
-Teo camel routes are also defined using diferant mechanisms
+Two camel routes are  defined using differant mechanisms:
 
- 1. A timer that logs a message every second
- 2. A route that exposes a HTTP endpoint and returns 'Hello world' (http://{host}:18080)
+ 1. A timer that logs a message every second defined using 'RouteBuilder'
+ 2. A route that exposes a HTTP endpoint and returns 'Hello world', http://{host}:18080, defined in the configuration bean.
 
