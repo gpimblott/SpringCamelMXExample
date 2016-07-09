@@ -1,23 +1,26 @@
 package com.pimblott.samples.spring.boot.camel;
 
-import org.apache.camel.spring.boot.CamelSpringBootApplicationController;
-import org.springframework.boot.SpringApplication;
+
+import org.apache.camel.spring.boot.FatJarRouter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Created by Gordon on 19/05/2015.
  */
 @SpringBootApplication
-public class ExampleCamelApplication {
+public class ExampleCamelApplication extends FatJarRouter {
 
 
-    public static void main(String[] args) {
-        ApplicationContext applicationContext = new SpringApplication(ExampleCamelApplication.class).run(args);
-        CamelSpringBootApplicationController applicationController =
-                applicationContext.getBean(CamelSpringBootApplicationController.class);
-        applicationController.blockMainThread();
+    @Override
+    public void configure() throws Exception {
+        from("netty-http:http://0.0.0.0:18080").
+                setBody().simple("ref:helloWorld");
+    }
 
+    @Bean
+    String helloWorld() {
+        return "helloWorld";
     }
 
 }
