@@ -22,7 +22,9 @@ The following endpoints are available when you run the application:
 
 # Endpoints available
 
-## http://{host}:8091/hawtio
+## Hawtio
+
+Endpoint: http://{host}:8091/hawtio
 
 Access to the Hawt.io monitoring console.  Authentication has been turned off so you will be redirected to the configuration screen.  To connect to your application use the jolokia endpoint as follows
 ```
@@ -31,9 +33,11 @@ Access to the Hawt.io monitoring console.  Authentication has been turned off so
 * port=8095
 * path=jolokia
 ```
-## http://{host}:8095/jolokia
+## Jolokia
 
-This is required for the hawt.io console
+Endpoint: http://{host}:8095/jolokia
+
+This provide conversion from JMX to REST/json. It is required for the hawt.io console
 
 ## Actuator endpoints
 
