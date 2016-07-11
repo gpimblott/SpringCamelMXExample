@@ -7,6 +7,7 @@ This contains a number of 'funky' features that are useful for development and d
 The project is pre-configured with the following items:
 * Spring Boot
 * Spring Boot Camel
+* Spring Remote Shell
 * Jetty
 * Spring Boot Actuator
 * Jolokia
@@ -17,6 +18,7 @@ This gives you the following capabilities:
 * HTTP Servlet container - for actuator and your own HTTP routes
 * Metrics
 * Monitoring
+* SSH/Telnet remote console for managing application and Camel routes
 
 The following endpoints are available when you run the application:
 
@@ -53,6 +55,17 @@ These are the standard Spring Boot Actuator endpoints for 'Production ready' cod
  http://{host}:8095/info
  http://{host}:8095/dump
 ```
+
+## Remote shell
+
+The Spring remote shell is included in the base build. This provides SSH command line access to the application. More information can be found here (http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-remote-shell.html).
+
+In summary connect to ssh -p 2000 user@localhost using the password displayed when the application starts-up.
+
+The camel commands have also been included to allow control of the executing routes.
+Example
+
+Once connected type camel route-list camel-1 this will display the currently defined routes.
 
 # Camel Routes
 
