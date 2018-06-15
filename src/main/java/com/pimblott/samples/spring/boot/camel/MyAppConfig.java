@@ -19,18 +19,20 @@ public class MyAppConfig {
     @Autowired
     CamelContext camelContext;
 
-//    @Bean
-//    MyService myService() {
-//        return new DefaultMyService(camelContext);
-//    }
+    @Bean
+    CamelContextConfiguration contextConfiguration() {
+        return new CamelContextConfiguration() {
+            @Override
+            public void beforeApplicationStart(CamelContext context) {
+                System.out.println("before application start");
 
-//    @Bean
-//    CamelContextConfiguration contextConfiguration() {
-//        return new CamelContextConfiguration() {
-//            @Override
-//            void beforeApplicationStart(CamelContext context) {
-//                System.out.println("Doing Custom Camel config here");
-//            }
-//        };
-//    }
+               // System.setProperty("hawtio.authenticationEnabled", "false");
+            }
+
+            @Override
+            public void afterApplicationStart(CamelContext camelContext) {
+                System.out.println("After application start");
+            }
+        };
+    }
 }

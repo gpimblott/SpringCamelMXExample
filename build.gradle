@@ -1,66 +1,65 @@
 buildscript {
-    repositories {
-        jcenter()
-        maven { url "http://repo.spring.io/snapshot" }
-        maven { url "http://repo.spring.io/milestone" }
+    ext {
+        // Can't use the latest version of Spring until Camel fixes relaxedPropertyResolver dependancy
+        // springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '1.5.10.RELEASE'
+        camelVersion = '2.21.1'
+        hawtVersion = '2.0.2'
     }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
-    }
-}
-
-
-
-version = '1.0'
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
-
-allprojects {
-}
-
-subprojects {
-    apply plugin: "java"
 
     repositories {
-        jcenter()
-        maven { url "http://repo.spring.io/snapshot" }
-        maven { url "http://repo.spring.io/milestone" }
+        mavenCentral()
     }
-}
-
-
-project(':spring-boot-camel') {
-    apply plugin: "spring-boot"
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE" ){
-            exclude module: "spring-boot-starter-tomcat"
-        }
-
-        compile("org.springframework.boot:spring-boot-starter-jetty:1.3.6.RELEASE")
-
-        compile("org.springframework.boot:spring-boot-starter-actuator:1.3.6.RELEASE")
-
-        compile("org.apache.camel:camel-spring-boot-starter:2.17.0")
-        compile("org.apache.camel:camel-netty:2.17.0")
-        compile("org.apache.camel:camel-netty-http:2.17.0")
-
-        compile("io.hawt:hawtio-springboot:1.4.65")
-        compile("io.hawt:hawtio-core:1.4.65")
-
-        testCompile("org.springframework.boot:spring-boot-starter-test")
-        testCompile("junit:junit")
-    }
-
-    mainClassName = 'com.pimblott.samples.spring.boot.camel.ExampleCamelApplication'
-
-    jar {
-        baseName = 'SpringBootCamelStarter'
-        version = '0.1.0-SNAPSHOT'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = 'com.pimblott'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+
+    compile "org.apache.camel:spring-boot:${camelVersion}"
+    compile "org.apache.camel:camel-spring-boot-starter:${camelVersion}"
+
+
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-security")
+
+
+    compile "org.apache.camel:camel-netty:${camelVersion}"
+    compile "org.apache.camel:camel-netty-http:${camelVersion}"
+
+    compile "io.hawt:hawtio-springboot:${hawtVersion}"
+    compile "io.hawt:hawtio-core:${hawtVersion}"
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit")
+}
+
+
+
+
 
 
 
