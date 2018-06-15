@@ -17,8 +17,8 @@ public class MyRoute extends RouteBuilder {
 
         from("timer:foo").to("log:bar");
 
-//        from("netty-http:http://0.0.0.0:8085").
-//                setBody().simple("ref:helloWorld");
+        from("netty-http:http://0.0.0.0:8085").
+                setBody().simple("ref:helloWorld");
     }
 
     @Bean

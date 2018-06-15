@@ -26,15 +26,14 @@ The following endpoints are available when you run the application:
 
 ## Hawtio
 
-Endpoint: http://{host}:8091/hawtio
+Endpoint: http://{host}:8095/hawtio
 
-Access to the Hawt.io monitoring console.  Authentication has been turned off so you will be redirected to the configuration screen.  To connect to your application use the jolokia endpoint as follows
+Access to the Hawt.io monitoring console is protected
 ```
-* schema=http
-* host=your host
-* port=8095
-* path=jolokia
-```
+ Username:admin
+ Password:admin
+ ```
+
 ## Jolokia
 
 Endpoint: http://{host}:8095/jolokia
@@ -43,8 +42,15 @@ This provide conversion from JMX to REST/json. It is required for the hawt.io co
 
 ## Actuator endpoints
 
-These are the standard Spring Boot Actuator endpoints for 'Production ready' code.  These are exposed on a different port to the main application to enable their protection using standard firewall port protection.  For further protection authentication could be enabled.
+These are the standard Spring Boot Actuator endpoints for 'Production ready' code.  These are exposed on a different port to the main application to enable their protection using standard firewall port protection.  
+Authentication is enabled.
 
+```
+ Username:admin
+ Password:admin
+ ```
+
+Endpoints
 ```
  http://{host}:8095/metrics
  http://{host}:8095/env
@@ -72,5 +78,5 @@ Once connected type camel route-list camel-1 this will display the currently def
 Two camel routes are  defined using differant mechanisms:
 
  1. A timer that logs a message every second defined using 'RouteBuilder'
- 2. A route that exposes a HTTP endpoint and returns 'Hello world', http://{host}:18080, defined in the configuration bean.
+ 2. A route that exposes a HTTP endpoint and returns 'Hello world', http://{host}:8085, defined in the configuration bean.
 
