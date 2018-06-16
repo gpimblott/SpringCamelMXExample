@@ -1,18 +1,21 @@
 # IBM MQ / Spring Boot  / Apache Camel
 
-Example project using IBM MQ, Spring Boot and Apache camel.
+Example project using IBM MQ, Spring Boot and Apache camel.  It demonstrates both reading and writing to an 
+MX queue by emitting a message every second and reading the message back.  The receiving camel route outputs
+the body of the received message to the log.
 
-In order to run it needs an instance of IBM MQ running locally. I used this docker image - https://hub.docker.com/r/ibmcom/mq/.
+To run the application it needs an instance of IBM MQ running locally. 
+I used the IBM provided docker image - https://hub.docker.com/r/ibmcom/mq/.
 
 ## Running the Docker image
 
-Download the docker image
+To download the docker image...
 
 ```
 docker pull ibmcom/mq
 ```
 
-Details for running the docker image can be found here->https://github.com/ibm-messaging/mq-docker
+Full details for using the docker image can be found here->https://github.com/ibm-messaging/mq-docker
 
 **TL;DR**
 
@@ -35,7 +38,7 @@ Once started MQ Dev edition will be running with the following configuration
   
 * Port 1414 - MQ listener
 
-All of the default settings are used for this demonstration application
+All of the default settings are used for the demonstration application
 
 ## Monitoring
 

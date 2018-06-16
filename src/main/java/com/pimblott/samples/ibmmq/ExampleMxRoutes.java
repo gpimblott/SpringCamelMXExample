@@ -1,12 +1,10 @@
 package com.pimblott.samples.ibmmq;
 
-
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * Create two routes
+ * Create two Camel routes
  *
  * 1) Listen to queue DEV.QUEUE.1 and log received messages
  * 2) Start a timer that emits a message every second to DEV.QUEUE.1 continaing a random number
