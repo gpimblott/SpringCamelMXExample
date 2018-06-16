@@ -1,82 +1,66 @@
-# SpringBootCamelStarter
+# IBM MQ / Spring Boot  / Apache Camel
 
-My starter project for a Spring Boot application using Apache Camel.
+Example project using IBM MQ, Spring Boot and Apache camel.
 
-This contains a number of 'funky' features that are useful for development and demonstrations.  They can easily be disabled for production if required.
+In order to run it needs an instance of IBM MQ running locally. I used this docker image - https://hub.docker.com/r/ibmcom/mq/.
 
-The project is pre-configured with the following items:
-* Spring Boot
-* Spring Boot Camel
-* Spring Remote Shell
-* Jetty
-* Spring Boot Actuator
-* Jolokia
-* Hawt.io
+## Running the Docker image
 
-This gives you the following capabilities:
-* Apache Camel, Enterprise Integration Patterns, embedded in a Spring Boot project
-* HTTP Servlet container - for actuator and your own HTTP routes
-* Metrics
-* Monitoring
-* SSH/Telnet remote console for managing application and Camel routes
-
-The following endpoints are available when you run the application:
-
-# Endpoints available
-
-## Hawtio
-
-Endpoint: http://{host}:8095/hawtio
-
-Access to the Hawt.io monitoring console is protected
-```
- Username:admin
- Password:admin
- ```
-
-## Jolokia
-
-Endpoint: http://{host}:8095/jolokia
-
-This provide conversion from JMX to REST/json. It is required for the hawt.io console
-
-## Actuator endpoints
-
-These are the standard Spring Boot Actuator endpoints for 'Production ready' code.  These are exposed on a different port to the main application to enable their protection using standard firewall port protection.  
-Authentication is enabled.
+Download the docker image
 
 ```
- Username:admin
- Password:admin
- ```
-
-Endpoints
-```
- http://{host}:8095/metrics
- http://{host}:8095/env
- http://{host}:8095/health
- http://{host}:8095/mappings
- http://{host}:8095/configprops
- http://{host}:8095/trace
- http://{host}:8095/info
- http://{host}:8095/dump
+docker pull ibmcom/mq
 ```
 
-## Remote shell
+Details for running the docker image can be found here->https://github.com/ibm-messaging/mq-docker
 
-The Spring remote shell is included in the base build. This provides SSH command line access to the application. More information can be found here (http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-remote-shell.html).
+**TL;DR**
 
-In summary connect to ssh -p 2000 user@localhost using the password displayed when the application starts-up.
+Run a default queue with all the defaults
 
-The camel commands have also been included to allow control of the executing routes.
-Example
+```
+docker run \
+  --env LICENSE=accept \
+  --env MQ_QMGR_NAME=QM1 \
+  --publish 1414:1414 \
+  --publish 9443:9443 \
+  --detach \
+  ibmcom/mq
+```
 
-Once connected type camel route-list camel-1 this will display the currently defined routes.
+Once started MQ Dev edition will be running with the following configuration
+* http://localhost:9443 - MQ Management console
+ 
+  Username : admin password: passw0rd
+  
+* Port 1414 - MQ listener
 
-# Camel Routes
+All of the default settings are used for this demonstration application
 
-Two camel routes are  defined using differant mechanisms:
+## Monitoring
 
- 1. A timer that logs a message every second defined using 'RouteBuilder'
- 2. A route that exposes a HTTP endpoint and returns 'Hello world', http://{host}:8085, defined in the configuration bean.
+Both Spring Actuator and Hawtio are configured on this example app using port 8095.
+
+
+**Actuator Endpoints**
+
+```$xslt
+Some endpoints require authentication
+
+Username : admin
+Password : admin
+
+http://localhost:8095/health
+http://localhost:8095/info
+http://localhost:8095/metrics
+```
+
+**HAWTIO**
+
+Hawtio is available on port 8095: /hawtio as well.  It provides realtime visualisation of
+the process, including the camel messages exchanges.
+
+```$xslt
+http://localhost:8095/hawtio
+```
 

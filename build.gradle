@@ -53,6 +53,12 @@ dependencies {
     compile "io.hawt:hawtio-springboot:${hawtVersion}"
     compile "io.hawt:hawtio-core:${hawtVersion}"
 
+    compile 'org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1'
+    compile group: 'com.ibm.mq', name: 'mq-jms-spring-boot-starter', version: '2.0.0'
+    compile 'org.apache-extras.camel-extra:components:2.18.0'
+    compile 'org.apache.camel:camel-jms:2.21.1'
+
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
 }

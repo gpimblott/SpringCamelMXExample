@@ -1,4 +1,4 @@
-package com.pimblott.samples.spring.boot.camel;
+package com.pimblott.samples.ibmmq;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -6,17 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
-
 /**
  * Created by Gordon on 19/05/2015.
  */
 @SpringBootApplication
-public class ExampleCamelApplication  {
+public class ExampleCamelMXApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(ExampleCamelApplication.class, args);
+        SpringApplication.run(ExampleCamelMXApplication.class, args);
     }
 
     @Bean
