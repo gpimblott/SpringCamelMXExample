@@ -32,7 +32,7 @@ docker run \
 ```
 
 Once started MQ Dev edition will be running with the following configuration
-* http://localhost:9443 - MQ Management console
+* https://localhost:9443/ibmmq/console - MQ Management console
  
   Username : admin password: passw0rd
   
